@@ -31,7 +31,20 @@ public class OrderService {
         //TODO: домашнее задание
         // Реализовать сохранение покупок, которые пользователь
         // добавил в корзину, в виде заказов, сохраняемых в БД.
-        return new Order();
+        Order order = new Order();
+        order.setUser(user);
+        order.setPrice(cart.getTotalCost());
+//        order.setDeliveryPrice();
+//        order.setDeliveryAddress(); создать input items доставки из формы order-filter
+//        order.setDeliveryDate();
+//        order.setPhoneNumber(user.getPhoneNumber()); // после отпарвялем в orger-result
+        order.setStatus(orderStatusService.getStatusById(1L));
+
+        order.setOrderItems(cart.getItems());
+
+
+        return orderRepository.save(order);
+//        return new Order();
     }
 
     public List<Order> getAllOrders() {
