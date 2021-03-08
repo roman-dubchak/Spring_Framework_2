@@ -1,7 +1,9 @@
 package com.geekbrains.geekspring.entities;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-@Data
+@Data @ToString(exclude = {"images", "category"}) 
 @NoArgsConstructor
 public class Product {
     @Id
@@ -33,7 +35,7 @@ public class Product {
     @Size(min = 8, max = 8)
     private String vendorCode;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "product")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "product", fetch = FetchType.EAGER)
     private List<ProductImage> images;
 
     @NotNull(message = "Title not null")

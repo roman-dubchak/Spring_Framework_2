@@ -1,6 +1,8 @@
 package com.geekbrains.geekspring.entities;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,7 +22,7 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.MERGE}, mappedBy = "order", fetch = FetchType.EAGER) // cascade = {CascadeType.ALL}
     private List<OrderItem> orderItems;
 
     @ManyToOne
@@ -44,9 +46,15 @@ public class Order {
     private LocalDateTime deliveryDate;
 
     @Column(name = "create_at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column(name = "update_at")
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public boolean confirmed(){
+        return status.equals("confirmed");
+    }
 
 }

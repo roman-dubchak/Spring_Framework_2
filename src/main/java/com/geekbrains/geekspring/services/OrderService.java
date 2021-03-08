@@ -1,5 +1,7 @@
 package com.geekbrains.geekspring.services;
 
+import com.geekbrains.geekspring.dto.DeliveryAddressInput;
+import com.geekbrains.geekspring.entities.DeliveryAddress;
 import com.geekbrains.geekspring.entities.Order;
 import com.geekbrains.geekspring.entities.ShoppingCart;
 import com.geekbrains.geekspring.entities.User;
@@ -32,19 +34,20 @@ public class OrderService {
         // Реализовать сохранение покупок, которые пользователь
         // добавил в корзину, в виде заказов, сохраняемых в БД.
         Order order = new Order();
+//        order.setId(order.getId());
         order.setUser(user);
+
         order.setPrice(cart.getTotalCost());
-//        order.setDeliveryPrice();
-//        order.setDeliveryAddress(); создать input items доставки из формы order-filter
+//        order.setDeliveryPrice(0.0);
+//        order.setDeliveryAddress(orderRepository.getDeliveryAddress()); //создать input items доставки из формы order-filter
 //        order.setDeliveryDate();
 //        order.setPhoneNumber(user.getPhoneNumber()); // после отпарвялем в orger-result
         order.setStatus(orderStatusService.getStatusById(1L));
-
         order.setOrderItems(cart.getItems());
+        System.out.println("New Order: " + order);
 
-
-        return orderRepository.save(order);
-//        return new Order();
+//        return orderRepository.save(order);
+        return order;
     }
 
     public List<Order> getAllOrders() {
@@ -55,11 +58,13 @@ public class OrderService {
         return orderRepository.findById(id).get();
     }
 
+    @Transactional
     public Order saveOrder(Order order) {
         //TODO: домашнее задание *
         // Подумать, возможно ли корзину реализовать через сессионный бин.
         // Если возможно и целесообразно, то реализовать это в коде.
-        return order;
+        System.out.println("Save order: " + order);
+        return orderRepository.save(order);
     }
 
     public Order changeOrderStatus(Order order, Long statusId) {
