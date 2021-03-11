@@ -1,6 +1,7 @@
 package com.geekbrains.geekspring.services;
 
 import com.geekbrains.geekspring.entities.Order;
+import com.geekbrains.geekspring.entities.OrderItem;
 import com.geekbrains.geekspring.entities.ShoppingCart;
 import com.geekbrains.geekspring.entities.User;
 import com.geekbrains.geekspring.repositories.OrderRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,7 +37,10 @@ public class OrderService {
         order.setUser(user);
         order.setPrice(cart.getTotalCost());
         order.setStatus(orderStatusService.getStatusById(1L));
-        order.setOrderItems(cart.getItems());
+        order.setOrderItems(new ArrayList<>(cart.getItems()));
+        for (OrderItem o : cart.getItems()) {
+            o.setOrder(order);
+        }
         System.out.println("New Order: " + order);
         return order;
     }
@@ -53,10 +58,10 @@ public class OrderService {
         //TODO: домашнее задание *
         // Подумать, возможно ли корзину реализовать через сессионный бин.
         // Если возможно и целесообразно, то реализовать это в коде.
-        Order orderOut = order;
+        Order orderOut = orderRepository.save(order);
         orderOut.setConfirmed(true);
-        System.out.println("Save order: " + order);
-        return orderRepository.save(orderOut);
+        System.out.println("Save order: " + orderOut);
+        return orderOut;
     }
 
     public Order changeOrderStatus(Order order, Long statusId) {

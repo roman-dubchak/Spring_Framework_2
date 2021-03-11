@@ -18,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-@Data @ToString(exclude = {"images", "category"}) 
+@Data @ToString(exclude = {"images", "category"})
 @NoArgsConstructor
 public class Product {
     @Id

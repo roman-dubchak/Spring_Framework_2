@@ -23,7 +23,7 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade = {CascadeType.MERGE}, mappedBy = "order", fetch = FetchType.EAGER) // cascade = {CascadeType.ALL}
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "order", fetch = FetchType.EAGER) // cascade = {CascadeType.ALL}
     private List<OrderItem> orderItems;
 
     @ManyToOne

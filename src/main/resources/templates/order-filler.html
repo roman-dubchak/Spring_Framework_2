@@ -57,7 +57,8 @@
             <input type="text" th:field="*{phoneNumber}" class="form-control input-sm">
             <br>
             <div class="col-sm-6 controls">
-                <button type="submit" class="btn btn-primary" th:href="@{'/shop/order/result/' + ${order.id}}">Готово</button>
+                <button type="submit" class="btn btn-primary" >Готово</button>
+<!--                th:href="@{'/shop/order/result/' + ${order.id}}"-->
                 <button class="btn btn-secondary" th:href="@{/shop}">Вернуться в магазин</button>
             </div>
         </div>

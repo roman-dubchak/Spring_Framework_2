@@ -1,12 +1,13 @@
 package com.geekbrains.geekspring.entities;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "orders_item")
-@Data
+@Data @ToString(exclude = {"product", "order"})
 public class OrderItem {
 
     @Id

@@ -127,7 +127,7 @@ public class ShopController {
         order.setDeliveryPrice(0.0);
         order = orderService.saveOrder(order);
         model.addAttribute("order", order);
-        return "redirect:/shop/order/result/" + order.getId();
+        return "order-filler";
     }
 
     @GetMapping("/order/result/{id}")

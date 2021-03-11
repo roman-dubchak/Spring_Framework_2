@@ -11,7 +11,7 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.servlet.http.HttpSession;
 
 @Service
-@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCartService {
 
     private ProductService productService;
