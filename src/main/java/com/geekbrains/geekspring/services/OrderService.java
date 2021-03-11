@@ -53,8 +53,10 @@ public class OrderService {
         //TODO: домашнее задание *
         // Подумать, возможно ли корзину реализовать через сессионный бин.
         // Если возможно и целесообразно, то реализовать это в коде.
+        Order orderOut = order;
+        orderOut.setConfirmed(true);
         System.out.println("Save order: " + order);
-        return orderRepository.save(order);
+        return orderRepository.save(orderOut);
     }
 
     public Order changeOrderStatus(Order order, Long statusId) {

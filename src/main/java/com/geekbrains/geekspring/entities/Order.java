@@ -1,5 +1,6 @@
 package com.geekbrains.geekspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -53,8 +54,8 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public boolean confirmed(){
-        return status.equals("confirmed");
-    }
+    @JsonIgnore
+    @Transient
+    private boolean confirmed;
 
 }
