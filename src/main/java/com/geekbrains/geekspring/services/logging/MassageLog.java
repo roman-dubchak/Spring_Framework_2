@@ -34,7 +34,8 @@ public class MassageLog {
     }
 
     public void getMassageExceptionLog() {
-        System.out.printf("Exception: %s in method: %s", exception.getMessage(), methodSignature);
+        System.out.printf("%tF  %tT Exception: %s in method: %s",
+                new Date(), new Date(), exception.getMessage(), methodSignature);
         System.out.println();
     }
 }
