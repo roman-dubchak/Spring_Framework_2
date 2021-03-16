@@ -27,9 +27,6 @@ public class MassageLog {
         this.methodSignature = methodSignature;
     }
 
-
-
-
     public void getMassageLog() {
         System.out.printf("%tF  %tT %s: %s; %s: %s.",
                 new Date(), new Date(), massageArgs, Arrays.toString(args), massageMethod, methodSignature);
