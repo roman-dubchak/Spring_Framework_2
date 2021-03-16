@@ -11,44 +11,44 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.stream.Stream;
-
 @Aspect
 @Component
 //@Log4j2
 public class OrderLoggingAspect {
+    private MassageLog massageLog;
+
     @After("execution(public * com.geekbrains.geekspring.services.OrderService.getAllOrders())")
-    public void logFindAllOrders(JoinPoint joinPoint){
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Object[] args = joinPoint.getArgs();
-        System.out.printf("Find orders: %s; from method: %s", Arrays.toString(args), methodSignature);
-        System.out.println();
-    }
-    @After("execution(public * com.geekbrains.geekspring.services.OrderService.changeOrderStatus(..))")
-    public void logChangeOrderStatus(JoinPoint joinPoint){
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Object[] args = joinPoint.getArgs();
-        System.out.printf("Order: %s; Change Status: %s", methodSignature.getReturnType().getName(), Arrays.toString(args));
-        System.out.println();
+    public void logFindAllOrders(JoinPoint joinPoint) {
+        getMassageLogOrder(joinPoint, "Find orders", "from method");
     }
 
-    @After("execution(public * com.geekbrains.geekspring.services.ProductService.*Order(..))")
-    public void logMethodOrder(JoinPoint joinPoint){
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Object[] args = joinPoint.getArgs();
-        System.out.printf("%tF  %tT Method: %s; Args: %s.",
-                        new Date(), new Date(), methodSignature, Arrays.toString(args));
-        System.out.println();
+    @After("execution(public * com.geekbrains.geekspring.services.OrderService.changeOrderStatus(..))")
+    public void logChangeOrderStatus(JoinPoint joinPoint) {
+        getMassageLogOrder(joinPoint, "Change Status", "Order");
+    }
+
+    @After("execution(public * com.geekbrains.geekspring.services.OrderService.makeOrder(..))")
+    public void logMakeMethodOrder(JoinPoint joinPoint) {
+        getMassageLogOrder(joinPoint, "Make Order", "Method");
+    }
+
+    @After("execution(public * com.geekbrains.geekspring.services.OrderService.saveOrder(..))")
+    public void logSaveMethodOrder(JoinPoint joinPoint) {
+        getMassageLogOrder(joinPoint, "Save Order", "Method");
     }
 
     @AfterThrowing(pointcut = "execution (public * com.geekbrains.geekspring.services.OrderService.*())",
-                    throwing = "exception")
-    public void excInMethodsOrder(JoinPoint joinPoint, Throwable exception){
+            throwing = "exception")
+    public void excInMethodsOrder(JoinPoint joinPoint, Throwable exception) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        System.out.printf("Exception: %s in method: %s", exception.getMessage(), methodSignature);
-        System.out.println();
+        massageLog = new MassageLog(exception, methodSignature);
+        massageLog.getMassageExceptionLog();
+    }
+
+    private void getMassageLogOrder(JoinPoint joinPoint, String massageArgs, String massageMethod) {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Object[] args = joinPoint.getArgs();
+        massageLog = new MassageLog(massageArgs, massageMethod, args, methodSignature);
+        massageLog.getMassageLog();
     }
 }
