@@ -13,6 +13,7 @@ public class MassageLog {
     private String massageMethod;
     private Object[] args;
     private MethodSignature methodSignature;
+    private Throwable exception;
 
     public MassageLog(Throwable exception, MethodSignature methodSignature) {
         this.methodSignature = methodSignature;
@@ -26,7 +27,7 @@ public class MassageLog {
         this.methodSignature = methodSignature;
     }
 
-    private Throwable exception;
+
 
 
     public void getMassageLog() {
