@@ -11,7 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class ProductsEndpoint {
-    private static final String NAMESPACE_URI = "http:www//geekbrains.com/geekspring/wsdproducts/generation";
+    private static final String NAMESPACE_URI = "http:www.geekbrains.com/geekspring/wsdproducts/generation";
     private ProductRepository productRepository;
 
     @Autowired

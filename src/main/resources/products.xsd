@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http:www//geekbrains.com/geekspring/wsdproducts/generation"
-           targetNamespace="http:www//geekbrains.com/geekspring/wsdproducts/generation" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http:www.geekbrains.com/geekspring/wsdproducts/generation"
+           targetNamespace="http:www.geekbrains.com/geekspring/wsdproducts/generation" elementFormDefault="qualified">
 
     <xs:element name="getProductsRequest">
         <xs:complexType>
