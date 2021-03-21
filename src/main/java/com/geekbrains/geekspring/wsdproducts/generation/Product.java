@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.time.LocalDate;
 
 
 /**
@@ -71,10 +72,10 @@ public class Product {
     protected double price;
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar createdAt;
+    protected LocalDate createdAt;
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar updatedAt;
+    protected LocalDate updatedAt;
 
     /**
      * Gets the value of the id property.
@@ -225,22 +226,22 @@ public class Product {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LocalDate }
      *     
      */
-    public XMLGregorianCalendar getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
     /**
      * Sets the value of the createdAt property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LocalDate }
      *     
      */
-    public void setCreatedAt(XMLGregorianCalendar value) {
+    public void setCreatedAt(LocalDate value) {
         this.createdAt = value;
     }
 
@@ -249,10 +250,10 @@ public class Product {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LocalDate }
      *     
      */
-    public XMLGregorianCalendar getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
@@ -261,10 +262,10 @@ public class Product {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LocalDate }
      *     
      */
-    public void setUpdatedAt(XMLGregorianCalendar value) {
+    public void setUpdatedAt(LocalDate value) {
         this.updatedAt = value;
     }
 

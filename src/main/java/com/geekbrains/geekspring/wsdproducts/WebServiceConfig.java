@@ -29,7 +29,7 @@ public class WebServiceConfig {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("ProductsPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http:www//geekbrains.com/geekspring/wsdproducts/generation");
+        wsdl11Definition.setTargetNamespace("http://www.geekbrains.com/geekspring/wsdproducts/generation");
         wsdl11Definition.setSchema(productsSchema);
         return wsdl11Definition;
     }

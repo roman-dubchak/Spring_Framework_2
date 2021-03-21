@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http:www.geekbrains.com/geekspring/wsdproducts/generation"
-           targetNamespace="http:www.geekbrains.com/geekspring/wsdproducts/generation" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.geekbrains.com/geekspring/wsdproducts/generation"
+           targetNamespace="http://www.geekbrains.com/geekspring/wsdproducts/generation" elementFormDefault="qualified">
 
     <xs:element name="getProductsRequest">
         <xs:complexType>
@@ -27,8 +27,8 @@
             <xs:element name="shortDescription" type="xs:string"/>
             <xs:element name="fullDescription" type="xs:string"/>
             <xs:element name="price" type="xs:double"/>
-            <xs:element name="createdAt" type="xs:dateTime"/>
-            <xs:element name="updatedAt" type="xs:dateTime"/>
+            <xs:element name="createdAt" type="xs:date"/>
+            <xs:element name="updatedAt" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
 
