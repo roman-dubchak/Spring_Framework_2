@@ -1,8 +1,8 @@
 package com.geekbrains.geekspring.wsdproducts;
 
 import com.geekbrains.geekspring.repositories.ProductRepository;
-import geekbrains_com.geekspring.wsdproducts.generation.GetProductsRequest;
-import geekbrains_com.geekspring.wsdproducts.generation.GetProductsResponse;
+import com.geekbrains.geekspring.wsdproducts.generation.GetProductsResponse;
+import com.geekbrains.geekspring.wsdproducts.generation.GetProductsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -23,8 +23,8 @@ public class ProductsEndpoint {
     @ResponsePayload
     public GetProductsResponse getProductsResponse (@RequestPayload GetProductsRequest request){
         GetProductsResponse response = new GetProductsResponse();
-        response.setProduct(productRepository.findOneByTitle(request.getName()));
+//        response.setProduct(productRepository.findById(request.getId()).get());
+        response.setProductEntities(productRepository.findById(request.getId()).get());
         return response;
     }
-
 }

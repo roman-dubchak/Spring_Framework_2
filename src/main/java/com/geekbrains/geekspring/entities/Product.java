@@ -20,7 +20,7 @@ import java.util.List;
 @Table(name = "products")
 @Data @ToString(exclude = {"images", "category"})
 @NoArgsConstructor
-public class Product {
+public class Product{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
