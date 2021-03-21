@@ -27,7 +27,7 @@ public class WebServiceConfig {
     @Bean (name = "products")
     public DefaultWsdl11Definition defaultWsdl11Definition (XsdSchema productsSchema){
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("ProductPort");
+        wsdl11Definition.setPortTypeName("ProductsPort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http:www//geekbrains.com/geekspring/wsdproducts/generation");
         wsdl11Definition.setSchema(productsSchema);
