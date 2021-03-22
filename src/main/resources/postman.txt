@@ -1,4 +1,6 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 				xmlns:gs="http://www.geekbrains.com/geekspring/wsdproducts/generation">
 
 	<soapenv:Header/>
@@ -11,7 +13,4 @@
 </soapenv:Envelope>
 
 GET
-
 localhost:8189/project/ws/products.wsdl
-
-$2a$10$CGamJWPYokRss2FX6WcBJOgFIDKyUoCYnrGtepfVQyDSTdngSxrzK
