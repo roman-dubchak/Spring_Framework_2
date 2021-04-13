@@ -23,15 +23,15 @@ public class MockTesting {
     private MockMvc mockMvc;
 
     @Test
-    public void testSimpleRest() throws Exception {
-        this.mockMvc.perform(get("/shop"))
+    public void testHomePage() throws Exception {
+        this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content().string("shop-page"));
+                .andExpect((ResultMatcher) content().string("index"));
     }
 
     @Test
-    public void testHomePage() throws Exception {
-        this.mockMvc.perform(get("/"))
+    public void testShopPage() throws Exception {
+        this.mockMvc.perform(get("/shop"))
                 .andExpect(status().isOk())
                 .andExpect((ResultMatcher) content().string("shop-page"));
     }
@@ -45,7 +45,7 @@ public class MockTesting {
     }
 
     @Test
-    public void loginAuthenticate() throws Exception{
+    public void testLoginAuthenticate() throws Exception{
         this.mockMvc.perform(formLogin("/authenticateTheUser").user("alex").password("123"))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -60,8 +60,10 @@ public class MockTesting {
     }
 
     @Test
-    public void getProductById(){
-
+    public void testCartPage() throws Exception{
+        this.mockMvc.perform(get("/cart"))
+                .andExpect(status().isOk())
+                .andExpect((ResultMatcher) content().string("cart-page"));
     }
 
 }
