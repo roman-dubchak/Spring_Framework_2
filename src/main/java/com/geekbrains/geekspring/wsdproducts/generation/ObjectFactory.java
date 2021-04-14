@@ -61,11 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllProductsRequest }
+     * Create an instance of {@link GetProductsRequest }
      * 
      */
-    public GetAllProductsRequest createGetAllProductsRequest() {
-        return new GetAllProductsRequest();
+    public GetProductsRequest createGetAllProductsRequest() {
+        return new GetProductsRequest();
     }
 
 }
