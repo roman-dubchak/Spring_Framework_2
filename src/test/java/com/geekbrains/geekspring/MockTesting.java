@@ -10,7 +10,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,14 +27,14 @@ public class MockTesting {
     public void testHomePage() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content().string("index"));
+                .andExpect(content().string("index"));
     }
 
     @Test
     public void testShopPage() throws Exception {
         this.mockMvc.perform(get("/shop"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content().string("shop-page"));
+                .andExpect(content().string("shop-page"));
     }
 
     @Test
@@ -63,7 +64,7 @@ public class MockTesting {
     public void testCartPage() throws Exception{
         this.mockMvc.perform(get("/cart"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content().string("cart-page"));
+                .andExpect(content().string("cart-page"));
     }
 
 }

@@ -35,27 +35,6 @@ public class ProductServiceTest {
     @MockBean
     private ProductRepository productRepository;
 
-//    @MockBean
-//    private UserRepository userRepository;
-//
-//    @MockBean
-//    private UserService userService;
-//
-//    @MockBean
-//    private OrderService orderService;
-//
-//    @MockBean
-//    private AdminController adminController;
-//
-//    @MockBean
-//    private CartController cartController;
-//
-//    @MockBean
-//    private ProductController productController;
-//
-//    @MockBean
-//    private ShopController shopController;
-
     @Test
     public void doProductFailTest(){
         Product product = new Product();
